@@ -13,8 +13,13 @@ eureka:
     fetch-registry: true
 
 cloud:
-  gateway:
-    discovery:
-      locator:
-        enabled: true
-        lower-case-service-id: true
+    gateway:
+      discovery:
+        locator:
+          enabled: true
+          lower-case-service-id: true
+      routes:
+        - id: user-service
+          uri: lb://user-service
+          predicates:
+            - Path=/api/users/**
