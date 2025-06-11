@@ -5,14 +5,7 @@ spring:
   application:
     name: api-gateway
 
-eureka:
-  client:
-    service-url:
-      defaultZone: http://localhost:8761/eureka/
-    register-with-eureka: true
-    fetch-registry: true
-
-cloud:
+  cloud:
     gateway:
       discovery:
         locator:
@@ -23,3 +16,10 @@ cloud:
           uri: lb://user-service
           predicates:
             - Path=/api/users/**
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka/
+    register-with-eureka: true
+    fetch-registry: true
